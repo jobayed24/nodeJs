@@ -1,0 +1,11 @@
+{
+  "name": "lnodejs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "index.js"
+  },
+  "author": "jobayed",
+  "license": "ISC",
+  "description": ""
+}
