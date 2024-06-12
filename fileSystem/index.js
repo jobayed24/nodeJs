@@ -1,10 +1,8 @@
-const {unlink}= require('node:fs/promises');
+const {unlink}=require('node:fs')
 
-(async function(path){
-    try{
-        await unlink(path)
-        console.log(`file deleted successfully from file path ${path}`)
-    }catch(err){
-        console.log(`there was an error occured ${err.message}`)
-    }
-})('./jk.txt')
+
+unlink('./text.txt',(err)=>{
+   if(err) throw err;
+    console.log(`successfully deleted the files`);
+})
+
