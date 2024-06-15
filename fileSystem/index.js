@@ -1,8 +1,15 @@
 const fs=require('node:fs');
 const path=require('node:path');
+const getCwb=(filename)=>path.join(__dirname,filename)
+try{
+    fs.renameSync(getCwb('text.txt'),getCwb('test.txt'));
 
-
-fs.mkdir(path.join(__dirname,'jk'),{recursive:true},(err)=>{
-    if(err) throw err;
-    console.log('folder created successfully')
-})
+}catch(err){
+    console.log(err.code)
+}
+getCurrenFiles();
+function getCurrenFiles(){
+    fs.readdirSync(path.join(__dirname)).forEach(file=>{
+        console.log(file)
+    })
+}
