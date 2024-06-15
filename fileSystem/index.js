@@ -1,15 +1,18 @@
 const fs=require('node:fs');
 const path=require('node:path');
 const getCwb=(filename)=>path.join(__dirname,filename)
-try{
-    fs.renameSync(getCwb('text.txt'),getCwb('test.txt'));
-
-}catch(err){
-    console.log(err.code)
-}
-getCurrenFiles();
-function getCurrenFiles(){
-    fs.readdirSync(path.join(__dirname)).forEach(file=>{
-        console.log(file)
+if(fs.existsSync(getCwb('jk'))){
+    fs.rm(getCwb('jk'),{recursive:true},(err)=>{
+        if(err) throw err;
+        console.log('deleted dir successfully');
     })
 }
+
+
+// make directory
+
+
+fs.mkdir(getCwb('jk/jk/jk'),{recursive: true},(err)=>{
+    if(err) throw err.message;
+    console.log('folder created successfully');
+})
