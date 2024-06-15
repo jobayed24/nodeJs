@@ -1,7 +1,8 @@
 const fs=require('node:fs');
+const path=require('node:path');
 
 
-fs.mkdir('./test/po',{recursive: true},(err)=>{
+fs.mkdir(path.join(__dirname,'jk'),{recursive:true},(err)=>{
     if(err) throw err;
-    console.log('file created successfully');
+    console.log('folder created successfully')
 })
