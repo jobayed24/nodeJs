@@ -1,8 +1,7 @@
-const {unlink}=require('node:fs')
+const fs=require('node:fs');
 
 
-unlink('./text.txt',(err)=>{
-   if(err) throw err;
-    console.log(`successfully deleted the files`);
+fs.mkdir('./test/po',{recursive: true},(err)=>{
+    if(err) throw err;
+    console.log('file created successfully');
 })
-
