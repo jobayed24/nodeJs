@@ -1,41 +1,29 @@
-const http=require('node:http');
-const path=require('node:path');
 const fs=require('node:fs');
-const os=require('node:os');
-const readline=require('node:readline');
-
-const directoryPath='./';
-
-function listFileAndTypes(dirPath){
-    fs.readdir(dirPath,(err,files)=>{
-        if(err) throw err;
-        files.forEach((file)=>{
-            fs.lstat(file,(err,fileStat)=>{
-                if(err) {
-                    console.log('there was an err with the files');
-                    return;
-                }
-                if(fileStat.isFile()){
-                    console.log(`${file} -Files`);
-                }
-                if(fileStat.isDirectory()){
-                    console.log(`${file}- Dir`);
-                }
-                if(fileStat.isSymbolicLink()){
-                    console.log(`${file}- Symbolic`)
-                }
-            })
-        })
-    })
-}
+const path=require('node:path');
+//define path
+const configFolder=path.join(__dirname,'config');
+const configFile=path.join(configFolder,'config.txt');
 
 
-listFileAndTypes(directoryPath);
+//create the directory
+
+fs.mkdir(configFolder,{recursive: true},(err)=>{
+  if(err) throw err;
+  console.log('Folder created successfully');
+});
 
 
+// write data on file
 
+fs.writeFile(configFile,'a new data added to the file',(err)=>{
+  if(err) throw err;
+  console.log('write in the file successfully');
+});
 
+// Read file concurrenty
 
-
-
+fs.readFile(configFile,{encoding: 'utf8'},(err,data)=>{
+  if(err) throw err;
+  console.log('File data:-',data);
+})
 
